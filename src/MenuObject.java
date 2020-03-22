@@ -48,7 +48,7 @@ public class MenuObject implements Comparable<MenuObject>{
 
     @Override
     public String toString() {
-        return this.getId() + " " + this.getParentID() + this.MenuName;
+        return "ID: " + this.getId() + " Parent ID: " + this.getParentID() + "Name: " + this.MenuName;
     }
 
     @Override
