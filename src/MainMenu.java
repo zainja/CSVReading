@@ -54,7 +54,7 @@ public class MainMenu {
             {
                 for(MenuObject child: parentMap.get(parent.getId()))
                 {
-                    System.out.println(child.toString());
+                    System.out.println(child.toDirectoryStyle());
                 }
             }
         }

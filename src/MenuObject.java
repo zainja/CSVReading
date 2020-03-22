@@ -14,6 +14,13 @@ public class MenuObject implements Comparable<MenuObject>{
         this.parentID = parentID;
         this.isHidden = isHidden;
         this.linkURL = linkURL;
+        for(char letter: linkURL.toCharArray())
+        {
+            if(letter == '/')
+            {
+                this.depth ++;
+            }
+        }
     }
 
     public int getId() {
@@ -31,12 +38,22 @@ public class MenuObject implements Comparable<MenuObject>{
         return parentID;
     }
 
-    public String getLinkURL() {
-        return linkURL;
+    public int getDepth() {
+        return depth;
     }
+
     @Override
     public String toString() {
         return "ID: " + this.getId() + " Parent ID: " + this.getParentID() + " Name: " + this.getMenuName();
+    }
+    public String toDirectoryStyle()
+    {
+        String dots = "";
+        for(int i = 0; i < this.depth; i++ )
+        {
+            dots += ".";
+        }
+        return dots + " " + this.menuName;
     }
 
     @Override
