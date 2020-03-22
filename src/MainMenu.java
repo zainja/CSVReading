@@ -25,7 +25,7 @@ public class MainMenu {
                     int id = Integer.parseInt(arr[0]);
                     String menuName = arr[1];
                     int parentID = (arr[2].equals("NULL"))? 0:Integer.parseInt(arr[2]);
-                    boolean isHidden = arr[3].equals("False");
+                    boolean isHidden = arr[3].equals("True");
                     String linkURL = arr[4];
                     MenuObject menuObject = new MenuObject(id, menuName, parentID, isHidden, linkURL);
                     menuObjects.add(menuObject);
