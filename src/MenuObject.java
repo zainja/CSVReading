@@ -47,6 +47,10 @@ public class MenuObject implements Comparable<MenuObject>{
         for(int i = 0; i < this.depth; i++ )
         {
             dots += ".";
+            if(i > 1)
+            {
+                dots += "..";
+            }
         }
         return dots + " " + this.menuName;
     }
