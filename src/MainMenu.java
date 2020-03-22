@@ -38,10 +38,7 @@ public class MainMenu {
             e.printStackTrace();
         }
         Collections.sort(menuObjects);
-        for (MenuObject menu:
-             menuObjects) {
-            System.out.println(menu.toString());
-        }
+
 
     }
 }
