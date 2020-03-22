@@ -31,10 +31,11 @@ public class MainMenu {
                     if(parentMap.containsKey(menuObject.getParentID()))
                     {
                         parentMap.get(menuObject.getParentID()).add(menuObject);
+                        Collections.sort(parentMap.get(menuObject.getParentID()));
                     }else
                         {
                             parentMap.put(menuObject.getParentID(),
-                                    new ArrayList<MenuObject>(Collections.singletonList(menuObject)));
+                                    new ArrayList<>(Collections.singletonList(menuObject)));
                         }
 
                 }

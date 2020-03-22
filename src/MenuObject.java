@@ -38,7 +38,7 @@ public class MenuObject implements Comparable<MenuObject>{
 
     @Override
     public int compareTo(MenuObject object) {
-        return Integer.compare(this.getParentID(), object.getParentID());
+        return this.getMenuName().compareTo(object.menuName);
     }
 
 }
