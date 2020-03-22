@@ -59,7 +59,7 @@ public class MainMenu11 {
 
 }
 static void getSubDirectories(MenuObject parent,HashMap<Integer,ArrayList<MenuObject>> parentMap ){
-  while(parentMap.containsKey(parent.getId())){
+  if(parentMap.containsKey(parent.getId())){
     for(MenuObject child: parentMap.get(parent.getId())){
       System.out.println(child.toDirectoryStyle());
       getSubDirectories(child,parentMap);}}}
