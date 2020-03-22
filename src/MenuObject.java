@@ -5,14 +5,12 @@ public class MenuObject implements Comparable<MenuObject>{
     private int ID;
     private String menuName;
     private int parentID;
-    private boolean isHidden;
     private String linkURL;
     private int depth;
-    public MenuObject(int ID, String menuName, int parentID, boolean isHidden, String linkURL) {
+    public MenuObject(int ID, String menuName, int parentID, String linkURL) {
         this.ID = ID;
         this.menuName = menuName;
         this.parentID = parentID;
-        this.isHidden = isHidden;
         this.linkURL = linkURL;
         for(char letter: linkURL.toCharArray())
         {
@@ -26,10 +24,7 @@ public class MenuObject implements Comparable<MenuObject>{
     public int getId() {
         return ID;
     }
-    public boolean getHidden()
-    {
-        return this.isHidden;
-    }
+
     public String getMenuName()
     {
         return this.menuName;

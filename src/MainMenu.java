@@ -26,21 +26,22 @@ public class MainMenu {
                     int parentID = (arr[2].equals("NULL"))? 0:Integer.parseInt(arr[2]);
                     boolean isHidden = arr[3].equals("True");
                     String linkURL = arr[4];
-                    MenuObject menuObject = new MenuObject(id, menuName, parentID, isHidden, linkURL);
-                    menuObjects.put(menuObject.getId(), menuObject);
-                    if(parentMap.containsKey(menuObject.getParentID()))
-                    {
-                        parentMap.get(menuObject.getParentID()).add(menuObject);
-                        Collections.sort(parentMap.get(menuObject.getParentID()));
-                    }else
+                    if (!isHidden) {
+
+                        MenuObject menuObject = new MenuObject(id, menuName, parentID, linkURL);
+                        menuObjects.put(menuObject.getId(), menuObject);
+                        if(parentMap.containsKey(menuObject.getParentID()))
+                        {
+                            parentMap.get(menuObject.getParentID()).add(menuObject);
+                            Collections.sort(parentMap.get(menuObject.getParentID()));
+                        }else
                         {
                             parentMap.put(menuObject.getParentID(),
                                     new ArrayList<>(Collections.singletonList(menuObject)));
                         }
-
+                    }
                 }
                 line ++;
-
 
             }
         } catch (FileNotFoundException e) {
