@@ -9,8 +9,8 @@ public class MainMenu {
 
         String csvFile = "src/Navigation.csv";
         String csvSplitBy = ";";
-        ArrayList<MenuObject> menuObjects = new ArrayList<>();
-
+        HashMap<Integer,Object> menuObjects = new HashMap<Integer, Object>();
+        HashMap<Integer,Object> parentMap = new HashMap<>();
         // read files from all opsys
 
         try {
@@ -28,7 +28,9 @@ public class MainMenu {
                     boolean isHidden = arr[3].equals("True");
                     String linkURL = arr[4];
                     MenuObject menuObject = new MenuObject(id, menuName, parentID, isHidden, linkURL);
-                    menuObjects.add(menuObject);
+                    menuObjects.put(menuObject.getId(), menuObject);
+                    parentMap.put(menuObject.getParentID(), menuObject);
+
                 }
                 line ++;
 
@@ -37,8 +39,6 @@ public class MainMenu {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        Collections.sort(menuObjects);
-
 
     }
 }
