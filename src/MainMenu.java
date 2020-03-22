@@ -46,6 +46,7 @@ public class MainMenu {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        parentMap.forEach((k,v)-> System.out.printf("Key: %d  Value: %s \n",k, v.toString()));
         ArrayList<MenuObject> root = parentMap.get(0);
         for(MenuObject parent: root)
         {
