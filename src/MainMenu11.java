@@ -9,9 +9,8 @@ public class MainMenu11 {
 
         String csvFile = "Navigation.csv";
         String csvSplitBy = ";";
-        ArrayList<MenuObject> menuObjects = new ArrayList<>();
-
-        // read files from all opsys
+        HashMap<Integer,Object> menuObjects = new HashMap<Integer, Object>();
+        HashMap<Integer,ArrayList<MenuObject>> parentMap = new HashMap<>();
 
         try {
             File iFile = new File(csvFile);
@@ -27,22 +26,41 @@ public class MainMenu11 {
                     int parentID = (arr[2].equals("NULL"))? 0:Integer.parseInt(arr[2]);
                     boolean isHidden = arr[3].equals("True");
                     String linkURL = arr[4];
-                    MenuObject menuObject = new MenuObject(id, menuName, parentID, isHidden, linkURL);
-                    menuObjects.add(menuObject);
+                    if (!isHidden) {
+
+                        MenuObject menuObject = new MenuObject(id, menuName, parentID, linkURL);
+                        menuObjects.put(menuObject.getId(), menuObject);
+                        if(parentMap.containsKey(menuObject.getParentID()))
+                        {
+                            parentMap.get(menuObject.getParentID()).add(menuObject);
+                            Collections.sort(parentMap.get(menuObject.getParentID()));
+                        }else
+                        {
+                            parentMap.put(menuObject.getParentID(),
+                                    new ArrayList<>(Collections.singletonList(menuObject)));
+                        }
+                    }
                 }
                 line ++;
-
 
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        Collections.sort(menuObjects);
-        for (MenuObject menu:
-             menuObjects) {
-            System.out.println(menu.toString());
+        parentMap.forEach((k,v)-> System.out.printf("Key: %d  Value: %s \n",k, v.toString()));
+        ArrayList<MenuObject> root = parentMap.get(0);
+        for(MenuObject parent: root)
+        {
+            System.out.println(parent.toDirectoryStyle());
+            getSubDirectories(parent,parentMap);
+
+
         }
 
-
-    }
+}
+static void getSubDirectories(MenuObject parent,HashMap<Integer,ArrayList<MenuObject>> parentMap ){
+  while(parentMap.containsKey(parent.getId())){
+    for(MenuObject child: parentMap.get(parent.getId())){
+      System.out.println(child.toDirectoryStyle());
+      getSubDirectories(child,parentMap);}}}
 }
