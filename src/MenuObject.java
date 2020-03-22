@@ -6,9 +6,6 @@ public class MenuObject implements Comparable<MenuObject>{
     private String LinkURL;
     public static int classAncestor = 0;
     int currentAncestor;
-    public int getId() {
-        return ID;
-    }
 
     public MenuObject(int ID, String menuName, int parentID, boolean isHidden, String linkURL) {
         this.ID = ID;
@@ -18,6 +15,10 @@ public class MenuObject implements Comparable<MenuObject>{
         LinkURL = linkURL;
         currentAncestor = classAncestor;
         classAncestor ++;
+    }
+
+    public int getId() {
+        return ID;
     }
 
     public void setID(int newID) {

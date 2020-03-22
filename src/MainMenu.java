@@ -12,12 +12,9 @@ public class MainMenu {
         ArrayList<MenuObject> menuObjects = new ArrayList<>();
 
         // read files from all opsys
-        // String fileLocation = File.separator + "D:" + File.separator + "Navigation.csv";
 
         try {
             File iFile = new File(csvFile);
-            // File iFile = new File("D://Navigation.csv");
-            //System.out.println(iFile);
             Scanner iScan = new Scanner(iFile);
             int line = 0;
             while (iScan.hasNext()) {
