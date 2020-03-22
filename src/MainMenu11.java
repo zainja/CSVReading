@@ -42,7 +42,7 @@ public class MainMenu {
              menuObjects) {
             System.out.println(menu.toString());
         }
-        
+
 
     }
 }
