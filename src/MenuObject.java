@@ -31,9 +31,6 @@ public class MenuObject implements Comparable<MenuObject>{
         return parentID;
     }
 
-    public int getDepth() {
-        return depth;
-    }
 
     @Override
     public String toString()
