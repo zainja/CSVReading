@@ -1,12 +1,10 @@
-import java.util.ArrayList;
-import java.util.Collections;
-
 public class MenuObject implements Comparable<MenuObject>{
     private int ID;
     private String menuName;
     private int parentID;
     private String linkURL;
     private int depth;
+
     public MenuObject(int ID, String menuName, int parentID, String linkURL) {
         this.ID = ID;
         this.menuName = menuName;
@@ -38,10 +36,7 @@ public class MenuObject implements Comparable<MenuObject>{
     }
 
     @Override
-    public String toString() {
-        return "ID: " + this.getId() + " Parent ID: " + this.getParentID() + " Name: " + this.getMenuName();
-    }
-    public String toDirectoryStyle()
+    public String toString()
     {
         String dots = "";
         for(int i = 0; i < this.depth; i++ )
