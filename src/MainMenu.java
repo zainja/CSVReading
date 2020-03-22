@@ -10,7 +10,7 @@ public class MainMenu {
         String csvFile = "src/Navigation.csv";
         String csvSplitBy = ";";
         HashMap<Integer,Object> menuObjects = new HashMap<Integer, Object>();
-        HashMap<Integer,Object> parentMap = new HashMap<>();
+        HashMap<Integer,ArrayList<MenuObject>> parentMap = new HashMap<>();
 
         try {
             File iFile = new File(csvFile);
@@ -28,7 +28,14 @@ public class MainMenu {
                     String linkURL = arr[4];
                     MenuObject menuObject = new MenuObject(id, menuName, parentID, isHidden, linkURL);
                     menuObjects.put(menuObject.getId(), menuObject);
-                    parentMap.put(menuObject.getParentID(), menuObject);
+                    if(parentMap.containsKey(menuObject.getParentID()))
+                    {
+                        parentMap.get(menuObject.getParentID()).add(menuObject);
+                    }else
+                        {
+                            parentMap.put(menuObject.getParentID(),
+                                    new ArrayList<MenuObject>(Collections.singletonList(menuObject)));
+                        }
 
                 }
                 line ++;
