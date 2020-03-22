@@ -3,7 +3,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-public class MainMenu {
+public class MainMenu11 {
 
     public static void main(String[] args) {
 
