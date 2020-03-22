@@ -11,7 +11,7 @@ public class MenuObject implements Comparable<MenuObject>{
     public MenuObject(int ID, String menuName, int parentID, boolean isHidden, String linkURL) {
         this.ID = ID;
         this.menuName = menuName;
-        parentID = parentID;
+        this.parentID = parentID;
         this.isHidden = isHidden;
         linkURL = linkURL;
     }

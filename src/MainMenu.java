@@ -11,7 +11,6 @@ public class MainMenu {
         String csvSplitBy = ";";
         HashMap<Integer,Object> menuObjects = new HashMap<Integer, Object>();
         HashMap<Integer,Object> parentMap = new HashMap<>();
-        // read files from all opsys
 
         try {
             File iFile = new File(csvFile);
@@ -39,6 +38,7 @@ public class MainMenu {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        parentMap.forEach((k,v) -> System.out.printf("key %d object %s \n",k , v.toString()));
 
     }
 }
