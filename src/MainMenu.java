@@ -45,7 +45,17 @@ public class MainMenu {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        parentMap.forEach((k,v) -> System.out.printf("key %d object %s \n",k , v.toString()));
+        ArrayList<MenuObject> root = parentMap.get(0);
+        for(MenuObject parent: root)
+        {
+            if(parentMap.containsKey(parent.getId()))
+            {
+                for(MenuObject child: parentMap.get(parent.getId()))
+                {
+                    System.out.println(child.toString());
+                }
+            }
+        }
 
     }
 }
