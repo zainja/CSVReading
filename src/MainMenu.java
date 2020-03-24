@@ -3,10 +3,12 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class MainMenu {
+    // depth of the tree of menus
     public static int depth;
     public static void main(String[] args) {
-
-        String csvFile = "src/Nav-Test.csv";
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Please enter file name: ");
+        String csvFile = scanner.nextLine();
         String csvSplitBy = ";";
         HashMap<Integer, ArrayList<MenuObject>> parentMap = new HashMap<>();
 
@@ -28,6 +30,7 @@ public class MainMenu {
                         MenuObject menuObject = new MenuObject(id, menuName, parentID, linkURL);
                         if (parentMap.containsKey(menuObject.getParentID())) {
                             parentMap.get(menuObject.getParentID()).add(menuObject);
+                            // sort alphabetically
                             Collections.sort(parentMap.get(menuObject.getParentID()));
                         } else {
                             parentMap.put(menuObject.getParentID(),
@@ -38,7 +41,7 @@ public class MainMenu {
                 line++;
 
             }
-
+            System.out.println("---------------------");
             ArrayList<MenuObject> root = parentMap.get(0);
             for (MenuObject parent : root) {
                 depth = 0;
@@ -46,7 +49,9 @@ public class MainMenu {
             }
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("print a correct file name");
+            // exit code without errors
+            System.exit(0);
         }
 
 
