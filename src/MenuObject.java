@@ -3,20 +3,12 @@ public class MenuObject implements Comparable<MenuObject>{
     private String menuName;
     private int parentID;
     private String linkURL;
-    private int depth;
 
     public MenuObject(int ID, String menuName, int parentID, String linkURL) {
         this.ID = ID;
         this.menuName = menuName;
         this.parentID = parentID;
         this.linkURL = linkURL;
-        for(char letter: linkURL.toCharArray())
-        {
-            if(letter == '/')
-            {
-                this.depth ++;
-            }
-        }
     }
 
     public int getId() {
@@ -31,18 +23,20 @@ public class MenuObject implements Comparable<MenuObject>{
         return parentID;
     }
 
+    public String toString() {
+        return this.menuName;
+    }
 
-    @Override
-    public String toString()
-    {
+    public String toString(int depth) {
         String dots = "";
-        for(int i = 0; i < this.depth; i++ )
+        if(depth == 0)
         {
-            dots += ".";
-            if(i > 1)
-            {
-                dots += "..";
-            }
+            return ". " + this.menuName;
+        }
+        for(int i = 0; i < depth; i++ )
+        {
+            dots += "..";
+
         }
         return dots + " " + this.menuName;
     }

@@ -3,10 +3,10 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class MainMenu {
-
+    public static int depth;
     public static void main(String[] args) {
 
-        String csvFile = "src/Navigation.csv";
+        String csvFile = "src/Nav-Test.csv";
         String csvSplitBy = ";";
         HashMap<Integer, ArrayList<MenuObject>> parentMap = new HashMap<>();
 
@@ -46,19 +46,23 @@ public class MainMenu {
         ArrayList<MenuObject> root = parentMap.get(0);
         for (MenuObject parent : root)
         {
+            depth = 0;
             printChildren(parent, parentMap);
         }
 
     }
 
     public static void printChildren(MenuObject parent, HashMap<Integer, ArrayList<MenuObject>> hashMap) {
-        System.out.println(parent.toString());
+        System.out.println(parent.toString(depth));
         if (hashMap.containsKey(parent.getId()))
         {
+            int parent_depth = depth;
+            depth ++;
             for (MenuObject children : hashMap.get(parent.getId()))
             {
                 printChildren(children, hashMap);
             }
+            depth = parent_depth;
         }
     }
 }
