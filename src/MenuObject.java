@@ -15,16 +15,12 @@ public class MenuObject implements Comparable<MenuObject>{
         return ID;
     }
 
-    public String getMenuName()
-    {
+    public String getMenuName() {
         return this.menuName;
-    }
-    public int getParentID() {
-        return parentID;
     }
 
-    public String toString() {
-        return this.menuName;
+    public int getParentID() {
+        return parentID;
     }
 
     public String toString(int depth) {
