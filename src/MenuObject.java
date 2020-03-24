@@ -28,16 +28,12 @@ public class MenuObject implements Comparable<MenuObject>{
     }
 
     public String toString(int depth) {
-        String dots = "";
         if(depth == 0)
         {
             return ". " + this.menuName;
         }
-        for(int i = 0; i < depth; i++ )
-        {
-            dots += "..";
-
-        }
+        String dots = ".";
+        dots = dots.repeat(3*depth+ 1);
         return dots + " " + this.menuName;
     }
 
