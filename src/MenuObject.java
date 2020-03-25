@@ -1,3 +1,5 @@
+import java.net.MalformedURLException;
+import java.net.URL;
 public class MenuObject implements Comparable<MenuObject>{
     private int ID;
     private String menuName;

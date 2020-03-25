@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.net.MalformedURLException;
 import java.util.*;
 
 public class MainMenu {
@@ -7,8 +8,12 @@ public class MainMenu {
     public static int depth;
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Please enter file name: ");
+        System.out.print("Please enter file name or e to exit: ");
         String csvFile = scanner.nextLine();
+        if (csvFile.equals("e"))
+        {
+            System.exit(0);
+        }
         String csvSplitBy = ";";
         HashMap<Integer, ArrayList<MenuObject>> parentMap = new HashMap<>();
 
@@ -51,7 +56,10 @@ public class MainMenu {
         } catch (FileNotFoundException e) {
             System.out.println("print a correct file name");
             // exit code without errors
-            System.exit(0);
+            //System.exit(0);
+        }
+        finally {
+            main(null);
         }
 
 
