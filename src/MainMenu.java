@@ -1,5 +1,4 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.*;
 
 public class MainMenu {
@@ -17,13 +16,13 @@ public class MainMenu {
         HashMap<Integer, ArrayList<MenuObject>> parentMap = new HashMap<>();
 
         try {
-            File iFile = new File(csvFile);
-            Scanner iScan = new Scanner(iFile);
-            int line = 0;
-            while (iScan.hasNext()) {
-                String nextLine = iScan.nextLine();
-                if (line > 0) {
-                    String[] arr = nextLine.split(csvSplitBy);
+            File file = new File(csvFile);
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            int lineCount = 0;
+            String line = br.readLine();
+            while (line != null) {
+                if (lineCount > 0) {
+                    String[] arr = line.split(csvSplitBy);
                     int id = Integer.parseInt(arr[0]);
                     String menuName = arr[1];
                     int parentID = (arr[2].equals("NULL")) ? 0 : Integer.parseInt(arr[2]);
@@ -42,7 +41,8 @@ public class MainMenu {
                         }
                     }
                 }
-                line++;
+                line = br.readLine();
+                lineCount++;
 
             }
             ArrayList<MenuObject> root = parentMap.get(0);
@@ -53,8 +53,9 @@ public class MainMenu {
 
         } catch (FileNotFoundException e) {
             System.out.println("print a correct file name");
-        }
-        finally {
+        } catch (IOException e) {
+            System.out.println("Error reading file");
+        } finally {
             main(null);
         }
 
