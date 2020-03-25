@@ -1,6 +1,6 @@
 ID;MenuName;ParentID;isHidden;LinkURL
 1;Company;NULL;False;#company
-2;About Us;1;False;http://www.linkedin.com/companyX/about
+-2;About Us;1;False;http://www.linkedin.com/companyX/about
 3;Mission;1;False;/company/mission
 4;Team;2;False;/company/aboutus/team
 5;Client 2;10;False;http://www.client2.com/casestudies/2

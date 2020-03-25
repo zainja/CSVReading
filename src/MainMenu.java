@@ -4,10 +4,11 @@ import java.util.*;
 public class MainMenu {
     // depth of the tree of menus
     public static int depth;
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please enter file name or e to exit: ");
         String csvFile = scanner.nextLine();
+        BufferedReader br = null;
         if (csvFile.equals("e"))
         {
             System.exit(0);
@@ -17,7 +18,7 @@ public class MainMenu {
 
         try {
             File file = new File(csvFile);
-            BufferedReader br = new BufferedReader(new FileReader(file));
+            br = new BufferedReader(new FileReader(file));
             int lineCount = 0;
             String line = br.readLine();
             while (line != null) {
@@ -26,8 +27,13 @@ public class MainMenu {
                     int id = Integer.parseInt(arr[0]);
                     String menuName = arr[1];
                     int parentID = (arr[2].equals("NULL")) ? 0 : Integer.parseInt(arr[2]);
-                    boolean isHidden = arr[3].equals("True");
+                    boolean isHidden = arr[3].equals("True") || (id < 0);
                     String linkURL = arr[4];
+                    if(id < 0)
+                    {
+                        System.out.println("File " + menuName + "was hidden because id < 0");
+                    }
+
                     if (!isHidden) {
 
                         MenuObject menuObject = new MenuObject(id, menuName, parentID, linkURL);
@@ -53,10 +59,9 @@ public class MainMenu {
 
         } catch (FileNotFoundException e) {
             System.out.println("print a correct file name");
-        } catch (IOException e) {
-            System.out.println("Error reading file");
         } finally {
             main(null);
+            br.close();
         }
 
 
