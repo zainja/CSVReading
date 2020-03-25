@@ -1,6 +1,5 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.net.MalformedURLException;
 import java.util.*;
 
 public class MainMenu {
@@ -46,7 +45,6 @@ public class MainMenu {
                 line++;
 
             }
-            System.out.println("---------------------");
             ArrayList<MenuObject> root = parentMap.get(0);
             for (MenuObject parent : root) {
                 depth = 0;
@@ -55,8 +53,6 @@ public class MainMenu {
 
         } catch (FileNotFoundException e) {
             System.out.println("print a correct file name");
-            // exit code without errors
-            //System.exit(0);
         }
         finally {
             main(null);
